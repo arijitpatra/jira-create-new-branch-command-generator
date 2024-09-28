@@ -1,0 +1,85 @@
+html {
+  width: 500px;
+  padding: 16px;
+  background-color: #eaf3ff;
+  color: #333333;
+}
+
+body {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 3px 7px 0px #c9e9ff;
+  font-family: "Montserrat", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+#heading {
+  display: flex;
+  gap: 10px;
+}
+
+#default {
+  display: flex;
+  color: #888;
+}
+
+#success {
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+#copyCta {
+  cursor: pointer;
+  padding: 0.45rem;
+  background-color: #ebf3ff;
+  border-radius: 5px;
+  &:hover {
+    background-color: #deebff;
+  }
+  &:active {
+    background-color: #d3e3fa;
+  }
+}
+
+#createNewBranchCodeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #dfdfdf;
+  padding: 0.5rem;
+  border-radius: 10px;
+  gap: 16px;
+  outline: none;
+  width: 100%;
+
+  &:focus-within {
+    border: 1px solid #0096ff;
+  }
+}
+
+#createNewBranchCode {
+  outline: none;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#failure {
+  display: none;
+  color: #888;
+}
+
+#notify {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: rgb(65 161 70);
+  background-color: rgb(220, 255, 220);
+  padding: 1rem;
+  margin-top: 5px;
+  border-radius: 10px;
+}
