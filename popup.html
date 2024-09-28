@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jira - Create New Branch</title>
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1 id="heading">
+      <img src="logo.png" height="32px" />
+      <div>Jira - Create New Branch</div>
+    </h1>
+
+    <section id="default">
+      Nothing to generate. Make sure your current tab is a supported Jira
+      ticket.
+    </section>
+
+    <section id="success">
+      <div id="createNewBranchCodeContainer">
+        <div id="createNewBranchCode" contenteditable="true"></div>
+        <div id="copyCta" title="Copy">
+          <img src="copy.png" height="16px" />
+        </div>
+      </div>
+    </section>
+
+    <section id="failure">
+      <div id="error"></div>
+    </section>
+
+    <section id="notify">
+      <div>Copied to clipboard</div>
+      <img src="checkmark.png" height="16px" />
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
