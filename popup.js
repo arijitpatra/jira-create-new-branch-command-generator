@@ -5,8 +5,13 @@ document.addEventListener("DOMContentLoaded", async() => {
       target: { tabId: tab.id },
       function: () => {
         try {
-            const ticketId = document.querySelector('[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]');
-            const ticketTitle = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]');
+            let ticketId = document.querySelector('[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]');
+            let ticketTitle = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]');
+
+            let breadcrumb = '';
+            let allIssueLinksInBreadcrumb = '';
+            let issueLink = '';
+            let branchName = '';
 
             const formatBranchName = (input) => {
                 let formattedBranchName = input.toLowerCase().split(' ').join('-'); // make the string lowercase and replace spaces with hyphens
@@ -21,7 +26,17 @@ document.addEventListener("DOMContentLoaded", async() => {
                 return formattedBranchName;
             }
 
-            const branchName = `${ticketId.textContent}-${formatBranchName(ticketTitle.textContent)}`;
+            // Handling for Jira On-Premise here, default implementation is for Jira Cloud
+            if(!!ticketId === false && !!ticketTitle === false) {
+                breadcrumb = document.getElementsByClassName('aui-nav-breadcrumbs')[0];
+                allIssueLinksInBreadcrumb = breadcrumb.querySelectorAll('.issue-link');
+                issueLink = allIssueLinksInBreadcrumb[allIssueLinksInBreadcrumb.length - 1]; // select the last issue among classes having .issue-link
+                ticketId = issueLink.getAttribute('data-issue-key');
+                ticketTitle = document.getElementById('summary-val');
+                branchName = `${ticketId}-${formatBranchName(ticketTitle.textContent)}`;
+            } else {
+                branchName = `${ticketId.textContent}-${formatBranchName(ticketTitle.textContent)}`;
+            }
 
             chrome.runtime.sendMessage({ branchName: branchName });
         } catch(e) {
