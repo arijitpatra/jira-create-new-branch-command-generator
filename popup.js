@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async() => {
                 return formattedBranchName;
             }
 
-            // Handling for Jira On-Premise here, default implementation is for Jira Cloud
+            // Handling for Jira On-Premise here (tested with Jira v9.12.14), default implementation is for Jira Cloud
             if(!!ticketId === false && !!ticketTitle === false) {
                 breadcrumb = document.getElementsByClassName('aui-nav-breadcrumbs')[0];
                 allIssueLinksInBreadcrumb = breadcrumb.querySelectorAll('.issue-link');
